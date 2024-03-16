@@ -1,55 +1,37 @@
 
 import './App.css';
-
-import nature from'./components/image/nature.jpg'
-
-
-import {useState} from 'react'
-import {ImagesList} from './components/Image'
-import {UseFetch} from './components/Userfetch'
-
-
-
-
-
-
-
-
-
+import Parent from './components/Parent1'
+import React, { useState } from "react";
+import UserFetch from './components/Userfetch'
 
 function App() {
-  let imageList =[{
-    "id":1,
-    "title":'nature',
-    'name':'Image',
-    "src":nature,
-    "alt":'nature'
-  }]
-    const [list, setList]= useState(imageList);
-    let deletion =(id)=>{
-      let newlist =imageList.filter((li)=> li.id !== id)
-      setList(newlist)
-
-     
-
-    }
 
   
-    
-  
 
- 
-  
- 
-  return(
-    <>
-    <UseFetch id ={2}/>
-    {/* <ImagesList lists={list} handledeletion={deletion} /> */}
-    
-    
+  const [counter, setCounter] = useState(0);
 
-    </>
-  )
+  const handleClick1 = () => {
+      
+      setCounter(counter + 1);
+  };
+const handleClick2 = ()=>{
+  setCounter(counter -1)
+}
+
+
+
+ return(
+  
+  <>
+  <Parent/>
+  <button  onClick={handleClick1}>Increament</button>
+  <button  onClick={handleClick2}>decreament</button>
+  <div>{counter}</div>
+  <UserFetch/>
+  </>
+
+ )
+
   
  }
 

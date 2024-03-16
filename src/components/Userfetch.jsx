@@ -1,31 +1,15 @@
-import {useState} from 'react'
-let UseFetch = ({id})=>{
-
-    try{
-            
-        const[list,setList]= useState()
-        fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
-
+import React, {useState, useEffect} from 'react';
+let UserFetch = ()=>{
+    let [data, setData] = useState(null)
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
         .then(response => response.json())
-      .then(json => setList(json))
-      
-      return(
-        <div>
-            {list && list.title}
-        </div>
-      )
-      
-      }
-    
-      catch(err){
-        console.log(err)
-      }
-   
-
+        .then(json => setData(json))
+    },[])
+    return(
+        <>
+        {data && data.title}
+        </>
+    )
 }
-    
-
-
-      
-
-export {UseFetch}
+export default UserFetch
